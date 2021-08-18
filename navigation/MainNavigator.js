@@ -8,7 +8,9 @@ import OrdersScreen from '../screens/shop/OrdersScreen';
 import Colors from '../constants/Colors';
 import LoginScreen from '../screens/shop/LoginScreen';
 import UserProductScreen from '../screens/user/UserProductScreen';
-import { createBottomTabNavigator } from 'react-navigation-tabs'
+import UpdateProductScreen from '../screens/user/UpdateProductScreen';
+
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons'
 const ProductsNavigator = createStackNavigator({
@@ -29,22 +31,23 @@ const ProductsNavigator = createStackNavigator({
     });
 
 
-const OrdersNavigator = createStackNavigator({
-    Orders: OrdersScreen
-},
-    {
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: Colors.secondaryColor,
-            },
-            headerTitleStyle: {
-                fontFamily: 'lora-italic',
-            }
-        }
-    })
+// const OrdersNavigator = createStackNavigator({
+//     Orders: OrdersScreen
+// },
+//     {
+//         defaultNavigationOptions: {
+//             headerStyle: {
+//                 backgroundColor: Colors.secondaryColor,
+//             },
+//             headerTitleStyle: {
+//                 fontFamily: 'lora-italic',
+//             }
+//         }
+//     })
 
 const AdminUserProducts = createStackNavigator({
-    AdminProducts: UserProductScreen
+    AdminProducts: UserProductScreen,  // za brisanje i pregled proizvoda admina
+    UpdateAdminProducts: UpdateProductScreen
 },
     {
         defaultNavigationOptions: {
@@ -66,9 +69,9 @@ const MainTabNavigator = createBottomTabNavigator({
         screen: ProductsNavigator,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <Ionicons name="md-trophy" size={25} color='white' style={{ marginTop: 5 }} />
+                return <Ionicons name="globe-outline" size={25} color='black' style={{ marginTop: 5 }} />
             },
-            tabBarLabel: 'Login'
+            tabBarLabel: 'Shop'
         }
     },
     // Orders: OrdersNavigator,
@@ -76,9 +79,9 @@ const MainTabNavigator = createBottomTabNavigator({
         screen: AdminUserProducts,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <Ionicons name="md-trophy" size={25} color='white' style={{ marginTop: 5 }} />
+                return <Ionicons name="person-circle-outline" size={25} color='black' style={{ marginTop: 5 }} />
             },
-            tabBarLabel: 'Login'
+            tabBarLabel: 'My products'
         }
     }
 })

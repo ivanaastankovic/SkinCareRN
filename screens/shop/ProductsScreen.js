@@ -77,7 +77,7 @@ ProductsScreen.navigationOptions = props => {
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item
                     title='Cart'
-                    iconName='ios-cart'
+                    iconName='cart-outline'
                     onPress={() => { props.navigation.navigate('Cart') }} // Cart iz MainNavigtor-a gde je definisana ova ruta u createStackNav
                 />
             </HeaderButtons>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     ,
     btn2: {
         padding: 20,
-        backgroundColor: '#e0b56c',
+        backgroundColor: '#a7e7a7',
         borderRadius: 170,
         elevation: 5
     },

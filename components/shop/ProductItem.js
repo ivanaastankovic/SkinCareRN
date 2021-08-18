@@ -13,7 +13,7 @@ const ProductItem = props => {
                 <Text style={styles.price}>${props.price.toFixed(2)}</Text>
             </View>
             <View style={styles.buttons}>
-                <View style={styles.btn}>
+                {/* <View style={styles.btn}>
                     <TouchableOpacity
                         style={styles.btn1}
                         onPress={props.onViewDetail}>
@@ -25,9 +25,10 @@ const ProductItem = props => {
                         onPress={props.onAddToCart}>
                         <Text style={styles.btnText}>ADD TO CART</Text>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity style={styles.btn2} title='Add to Cart' /> */}
+                    {/* <TouchableOpacity style={styles.btn2} title='Add to Cart' />   </View> */}
 
-                </View>
+               {props.children}
+                
             </View>
         </View>
     )

@@ -6,10 +6,13 @@ import productsReducer from './store/reducers/products';
 import { View, Text, StyleSheet} from 'react-native';
 import MainNavigator from './navigation/MainNavigator';
 import CartReducer from './store/reducers/cart';
+import ordersReducer from './store/reducers/orders';
+
 
 const rootReducer = combineReducers({ // rootReducer nam sluzi za kombinovanje vise state-ova, tj. da bismo vratili jedan veliki state koji sadrzi sva potrebna stanja 
   products: productsReducer,
-  cart: CartReducer
+  cart: CartReducer,
+  orders: ordersReducer
 });
 
 const store = createStore(rootReducer);

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Text, FlatList, Button } from 'react-native';
+import { View, StyleSheet, Text, FlatList, Button, Modal, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from '../../components/shop/CartItem';
 import * as cartActions from '../../store/actions/cart';
-
+import * as orderActions from '../../store/actions/orders';
 const CartScreen = props => {
 
     const totalAmount = useSelector(state => state.cart.sum)   // state jer nam je dostupno, cart jer je tako definisan selektor u App.js-u i onda sum da uzmemo sumu
@@ -32,7 +32,16 @@ const CartScreen = props => {
             <View style={styles.textView}>
                 <Text style={styles.text}>Total $ <Text style={styles.text}>{totalAmount.toFixed(2)}</Text></Text>
             </View>
-            <TouchableOpacity disabled={products.length === 0} style={styles.btn}><Text style={styles.text}>SHOP NOW</Text></TouchableOpacity>
+            <TouchableOpacity
+                disabled={products.length === 0}
+                onPress={() => {
+                    dispatch(orderActions.addOrder(products,totalAmount))
+                    props.navigation.navigate('Orders');
+                    Alert.alert("Your order has been successfully sent!")
+                }}
+                style={styles.btn}>
+                <Text style={styles.text}>SHOP NOW</Text>
+            </TouchableOpacity>
         </View>
 
         <View style={styles.k}>
@@ -58,7 +67,9 @@ const CartScreen = props => {
 
     </View>
 }
-
+CartScreen.navigationOptions = {
+    headerTitle: 'Cart'
+}
 const styles = StyleSheet.create({
     // container: {
     //     flex: 1,
@@ -102,7 +113,6 @@ CartScreen.navigationOptions = props => {
         headerTitleStyle: {
             fontFamily: 'lora-regular',
         },
-        headerTintColor: '#272625',
         headerTitleAlign: 'center',
 
     }

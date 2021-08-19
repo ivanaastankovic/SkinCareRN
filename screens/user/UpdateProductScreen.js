@@ -134,14 +134,16 @@ const UpdateProductScreen = props => {
                     initialValue={updatingProduct ? updatingProduct.description : ''}
                     initiallyValid={!!updatingProduct}
                 />
-                <Input
-                    id='price'
-                    label='Price'
-                    onInputChange={userInputHandler}
-                    initialValue={updatingProduct ? updatingProduct.price : ''}
-                    initiallyValid={!!updatingProduct}
-                    keyboardType="decimal-pad"
-                />
+                {updatingProduct ? null : (
+                    <Input
+                        id='price'
+                        label='Price'
+                        onInputChange={userInputHandler}
+                        initialValue={updatingProduct ? updatingProduct.price : ''}
+                        initiallyValid={!!updatingProduct}
+                        keyboardType="decimal-pad"
+                    />
+                )}
                 <Input
                     id='image'
                     label='Image url:'

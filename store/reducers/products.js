@@ -2,19 +2,25 @@ import PRODUCTS from '../../data/dummy-data';
 import { REMOVE_PRODUCT } from '../actions/products';
 import { INSERT_PRODUCT } from '../actions/products';
 import { UPDATE_PRODUCT } from '../actions/products';
+import { SELECT_PRODUCTS } from '../actions/products';
 import Product from '../../models/product';
 const initialState = {
-    availableProducts: PRODUCTS,
-    userProducts: PRODUCTS.filter(prod => prod.userId === 'u1')
+    availableProducts: [],
+    userProducts: []
 };
 console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
 console.log(initialState.userProducts);
 export default (state = initialState, action) => {
     switch (action.type) {
+        case SELECT_PRODUCTS:
+            return {
+                availableProducts: action.products,
+                userProducts: action.userProducts
+            }
         case INSERT_PRODUCT:
             const product = new Product(
-                new Date().toString(),
-                'u1',
+                action.product.id,  // ovo nam reducer vraca iz baze 
+                action.product.userId,
                 action.product.name,
                 action.product.imageUrl,
                 action.product.description,

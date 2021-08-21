@@ -14,12 +14,13 @@ const ProductDetailsScreen = props => {
 
                 <Image source={{ uri: choosenProduct.imageUrl }} style={styles.image} />
             </View>
-            <View style={styles.btnView}>
+            <View >
                 <TouchableOpacity
+                style={styles.btnView}
                     onPress={() => {
                         dispatch(cartActions.addProduct(choosenProduct))
                     }}>
-                    <Text style={styles.btn}>Shop</Text>
+                    <Text style={styles.btn}>ADD TO CART</Text>
                 </TouchableOpacity>
                 {/* <Button color='#e0b56c' style={styles.btn} title="Add to cart" /> */}
             </View>
@@ -34,6 +35,16 @@ const ProductDetailsScreen = props => {
 
 }
 
+
+ProductDetailsScreen.navigationOptions = props => {
+    return {
+        headerTitle: 'About product',
+        headerTitleStyle: {
+            fontFamily: 'lora-regular',
+        },
+        headerTitleAlign: 'center',
+    }
+}
 const styles = StyleSheet.create({
 
     scrollview: {
@@ -56,12 +67,12 @@ const styles = StyleSheet.create({
         marginLeft: 70,
         marginRight: 70,
         borderRadius: 200,
-        backgroundColor: '#FFF8DC'
+        backgroundColor: '#a7e7a7'
     },
     btn: {
         alignItems: 'center',
         fontFamily: 'lora-regular',
-        color: 'black',
+        color: 'white',
         fontSize: 20
     },
     price: {

@@ -1,7 +1,9 @@
-import React from 'react';
-import { Text, FlatList, StyleSheet, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import React,{useEffect} from 'react';
+import { Text, FlatList, StyleSheet, View, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'; // koristimo da bismo mogli da pristupimo store/reducers/PRODUCTS nizu
-import * as cartActions from '../../store/actions/cart'
+import * as cartActions from '../../store/actions/cart';
+import * as productsActions from '../../store/actions/products';
+import * as userActions from '../../store/actions/user'
 import ProductItem from '../../components/shop/ProductItem';
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -10,6 +12,9 @@ const ProductsScreen = (props) => {
     const products = useSelector(state => state.products.availableProducts);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(productsActions.selectProducts());     // GET method ; vraca mi proizvode iz baze 
+    }, [dispatch])
     const selectItemHandler = (id, title) => {
         props.navigation.navigate('ProductDetails', {
             productId: id,
@@ -68,28 +73,39 @@ const ProductsScreen = (props) => {
 ProductsScreen.navigationOptions = props => {
     return {
 
-        headerTitle: '#skincare',
+        headerTitle: 'SkinCare Shop',
         headerTitleStyle: {
             fontFamily: 'lora-regular',
         },
         headerTitleAlign: 'center',
-        headerRight:
+        
+        headerLeft:
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item
                     title='Cart'
-                    iconName='cart-outline'
+                    iconName='cart'
                     onPress={() => { props.navigation.navigate('Cart') }} // Cart iz MainNavigtor-a gde je definisana ova ruta u createStackNav
                 />
             </HeaderButtons>
         ,
-        // headerLeft:
-        //     <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        //         <Item
-        //             title='Menu'
-        //             iconName='ios-menu'
-        //             onPress={() => { props.navigation.toggleDrawer(); }} // Cart iz MainNavigtor-a gde je definisana ova ruta u createStackNav
-        //         />
-        //     </HeaderButtons>
+        headerRight:
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item
+                    title='logout'
+                    iconName='log-out-outline'
+                    onPress={() => {
+                        Alert.alert(
+                            '',
+                            'Are you sure you want to leave? :(',
+                            [
+                                {text: 'Yes', onPress: () => props.navigation.navigate('Login')},
+                                {text: 'NO', onPress: () => {}}
+                            ]
+                    )
+                        
+                    }} // Cart iz MainNavigtor-a gde je definisana ova ruta u createStackNav
+                />
+            </HeaderButtons>
 
     }
 }

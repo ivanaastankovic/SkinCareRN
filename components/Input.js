@@ -61,19 +61,19 @@ const Input = props => {
 
 const styles = StyleSheet.create({
     inputField: {
-        margin: 20
+        margin: 20,
     },
     label: {
         fontSize: 18,
-        fontFamily: 'lora-regular-italic',
-        margin: 5
+        fontFamily: 'lora-italic',
+        margin: 8
     },
     textInput: {
         borderWidth: 1.5,
         paddingHorizontal: 20,
         padding: 10,
         borderRadius: 150,
-        borderColor: '#ffc680'
+        borderColor: '#DEB887'
     },
     descriptionInput: {
         borderWidth: 1.5,

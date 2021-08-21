@@ -35,7 +35,7 @@ const CartScreen = props => {
             <TouchableOpacity
                 disabled={products.length === 0}
                 onPress={() => {
-                    dispatch(orderActions.addOrder(products,totalAmount))
+                    dispatch(orderActions.addOrder(products, totalAmount))
                     props.navigation.navigate('Orders');
                     Alert.alert("Your order has been successfully sent!")
                 }}
@@ -71,10 +71,11 @@ CartScreen.navigationOptions = {
     headerTitle: 'Cart'
 }
 const styles = StyleSheet.create({
-    // container: {
-    //     flex: 1,
-    //     alignItems: 'center',
-    // },
+    container: {
+        backgroundColor:'white',
+        height:'100%'
+
+    },
     cartInfo: {
         margin: 20
     },
@@ -101,10 +102,9 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     list: {
-        backgroundColor: '#F5F5DC'
-    },
-    k: {
-
+        // margin:20,
+        borderRadius:50,
+        // padding:10
     }
 })
 

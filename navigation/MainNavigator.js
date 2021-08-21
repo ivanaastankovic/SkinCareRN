@@ -6,7 +6,7 @@ import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
 import Colors from '../constants/Colors';
-import LoginScreen from '../screens/shop/LoginScreen';
+import LoginScreen from '../screens/user/LoginScreen';
 import UserProductScreen from '../screens/user/UserProductScreen';
 import UpdateProductScreen from '../screens/user/UpdateProductScreen';
 
@@ -84,5 +84,13 @@ const MainTabNavigator = createBottomTabNavigator({
             tabBarLabel: 'My products'
         }
     }
+});
+
+const LoginNavigator = createStackNavigator({
+    Login:LoginScreen
 })
-export default createAppContainer(MainTabNavigator);
+const MainNavigator = createSwitchNavigator({
+    Login: LoginNavigator,
+    TabNavigator: MainTabNavigator
+})
+export default createAppContainer(MainNavigator);

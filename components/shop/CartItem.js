@@ -4,19 +4,19 @@ import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const CartItem = props => {
     return (
-        <View style={styles.container}>
-            <View style={styles.text}>
-                <Text>{props.amount}</Text>
-                <Text>{props.name}</Text>
+        <View style={styles.cartItem}>
+            <View style={styles.itemData}>
+                <Text style={styles.quantity}>{props.amount}</Text>
+                <Text style={styles.mainText}>{props.name}</Text>
 
             </View>
 
-            <View style={styles.sumBtn}>
-                <Text>
+            <View style={styles.itemData}>
+                <Text style={styles.mainText}>
                     {props.totalSum.toFixed(2)}
                 </Text>
-                <TouchableOpacity onPress={props.Remove} style={styles.btn}>
-                    <Ionicons name={'ios-trash'} size={23} color="red" />
+                <TouchableOpacity onPress={props.Remove} style={styles.deleteButton}>
+                    <Ionicons name={'ios-trash'} size={23} color="#CD5C5C" />
                 </TouchableOpacity>
             </View>
 
@@ -26,18 +26,57 @@ const CartItem = props => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingLeft:60,
+    // container: {
+    //     paddingHorizontal:20,
+    //     justifyContent:'space-between',
+    //     flexDirection: 'row',
+    //      marginHorizontal: 20,
+    //      marginVertical:10
+    // },
+    // textContainer:{
+    //     paddingRight:90,
+    //     justifyContent:'space-between',
+    //     alignItems:'center'
+    // },
+
+    // sumBtn:{
+    //     justifyContent:'space-around',
+    //     paddingLeft:0,
+    //     alignItems:'center'
+    // },
+    // text:{
+    //     fontSize:20,
+    //     fontFamily:'lora-regular'
+    // }
+    cartItem: {
+        padding: 15,
+        backgroundColor: 'white',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // marginHorizontal: 20
-    },
-    text:{
-        margin:5
-    },
-
-    sumBtn:{
-        margin:5
-    }
+        marginHorizontal: 20
+      },
+      itemData: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent:'space-around'
+      },
+      quantity: {
+        fontFamily: 'lora-regular',
+        color: 'black',
+        fontSize: 20,
+        marginRight:8,
+        borderRadius:100,
+        backgroundColor:'#FFDEAD',
+        paddingHorizontal:15,
+        paddingVertical:5
+      },
+      mainText: {
+        fontFamily: 'lora-regular',
+        fontSize: 20,
+       
+      },
+      deleteButton: {
+        marginLeft: 20
+      }
 })
 export default CartItem;

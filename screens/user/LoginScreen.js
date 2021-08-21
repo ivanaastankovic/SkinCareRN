@@ -1,5 +1,5 @@
 import React, { useCallback, useReducer, useState, useEffect } from 'react';
-import { ScrollView, View, Text, KeyboardAvoidingView, StyleSheet, Button, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import * as userActions from '../../store/actions/user';
 import Input from '../../components/Input';
@@ -85,6 +85,7 @@ const LoginScreen = props => {
 
         } catch (error) {
             setError(error.message)
+            props.navigation.navigate('LoginNavigator')
             setIsLoading(false);
         }
 
@@ -132,14 +133,17 @@ const LoginScreen = props => {
             <View style={styles.btn}>
                 {/* <Button title={`Switch to ${signUpMode ? 'Login' : 'Sign up'}`}
                 /> */}
-                <TouchableOpacity
-                    style={styles.button2}
-                    onPress={() => {
-                        setSignUpMode(previousState => !previousState)
-                    }}>
-                    <Text style={styles.text}>{`Switch to ${signUpMode ? 'Login' : 'Sign up'}`}</Text>
-                </TouchableOpacity>
-
+                {isLoading ? (
+                    <ActivityIndicator size="small" color='black' />
+                ) : (
+                    <TouchableOpacity
+                        style={styles.button2}
+                        onPress={() => {
+                            setSignUpMode(previousState => !previousState)
+                        }}>
+                        <Text style={styles.text}>{`Switch to ${signUpMode ? 'Login' : 'Sign up'}`}</Text>
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     </View>
@@ -164,8 +168,8 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center'
     },
-    textInputFields:{
-        marginTop:20
+    textInputFields: {
+        marginTop: 20
     },
     button1: {
         paddingVertical: 20,

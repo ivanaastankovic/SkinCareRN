@@ -8,6 +8,7 @@ import ProductItem from '../../components/shop/ProductItem';
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../../components/HeaderButton.js';
+import { Ionicons } from '@expo/vector-icons';
 const ProductsScreen = (props) => {
     const products = useSelector(state => state.products.availableProducts);
     const dispatch = useDispatch();
@@ -96,7 +97,7 @@ ProductsScreen.navigationOptions = props => {
                     onPress={() => {
                         Alert.alert(
                             '',
-                            'Are you sure you want to leave? :(',
+                            'Are you sure you want to leave?',
                             [
                                 {text: 'Yes', onPress: () => props.navigation.navigate('Login')},
                                 {text: 'NO', onPress: () => {}}

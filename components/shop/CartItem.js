@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
       quantity: {
         fontFamily: 'lora-regular',
         color: 'black',
-        fontSize: 20,
+        fontSize: 15,
         marginRight:8,
         borderRadius:100,
         backgroundColor:'#FFDEAD',
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
       },
       mainText: {
         fontFamily: 'lora-regular',
-        fontSize: 20,
+        fontSize: 15,
        
       },
       deleteButton: {

@@ -10,23 +10,9 @@ const ProductItem = props => {
             </View>
             <View style={styles.text}>
                 <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+                <Text style={styles.price}>€ {props.price.toFixed(2)}</Text>
             </View>
             <View style={styles.buttons}>
-                {/* <View style={styles.btn}>
-                    <TouchableOpacity
-                        style={styles.btn1}
-                        onPress={props.onViewDetail}>
-                        <Text style={styles.btnText}>LEARN MORE</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.btn}>
-                    <TouchableOpacity style={styles.btn2}
-                        onPress={props.onAddToCart}>
-                        <Text style={styles.btnText}>ADD TO CART</Text>
-                    </TouchableOpacity>
-                    {/* <TouchableOpacity style={styles.btn2} title='Add to Cart' />   </View> */}
-
                {props.children}
                 
             </View>

@@ -31,20 +31,6 @@ const ProductsNavigator = createStackNavigator({
     });
 
 
-// const OrdersNavigator = createStackNavigator({
-//     Orders: OrdersScreen
-// },
-//     {
-//         defaultNavigationOptions: {
-//             headerStyle: {
-//                 backgroundColor: Colors.secondaryColor,
-//             },
-//             headerTitleStyle: {
-//                 fontFamily: 'lora-italic',
-//             }
-//         }
-//     })
-
 const AdminUserProducts = createStackNavigator({
     AdminProducts: UserProductScreen,  // za brisanje i pregled proizvoda admina
     UpdateAdminProducts: UpdateProductScreen
@@ -60,10 +46,6 @@ const AdminUserProducts = createStackNavigator({
         }
     });
 
-// const DrawNavigator = createDrawerNavigator({
-//     Products: ProductsNavigator,
-//     Orders: OrdersNavigator
-// })
 const MainTabNavigator = createBottomTabNavigator({
     Products: {
         screen: ProductsNavigator,
@@ -84,10 +66,23 @@ const MainTabNavigator = createBottomTabNavigator({
             tabBarLabel: 'My products'
         }
     }
-});
+},
+    {
+        tabBarOptions: {
+            inactiveBackgroundColor: '',
+            activeBackgroundColor: '#FAEBD7',
+            activeTintColor: 'black',
+            inactiveTintColor: 'black',
+            labelStyle: {
+                fontFamily: 'lora-regular',
+                marginBottom: 5
+            }
+        }
+    }
+);
 
 const LoginNavigator = createStackNavigator({
-    Login:LoginScreen
+    Login: LoginScreen
 })
 const MainNavigator = createSwitchNavigator({
     Login: LoginNavigator,

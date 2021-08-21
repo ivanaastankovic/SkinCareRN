@@ -30,7 +30,7 @@ const CartScreen = props => {
     return <View style={styles.container}>
         <View style={styles.cartInfo}>
             <View style={styles.textView}>
-                <Text style={styles.text}>Total $ <Text style={styles.text}>{totalAmount.toFixed(2)}</Text></Text>
+                <Text style={styles.text}>Total € <Text style={styles.text}>{totalAmount.toFixed(2)}</Text></Text>
             </View>
             <TouchableOpacity
                 disabled={products.length === 0}
